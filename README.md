@@ -21,6 +21,18 @@ modify the server's port, I changed this part (marked red) from 2000 to 8080 whi
 To modify the client's port, I changed this part (marked red) from 2000 to 8080 which defines which port it uses.
 ![Modifying Client Port](sources/2.2%20client.jpg)
 
-I also made sure that both server and client are using the same websocket protocol so I tested it by executing the commands
+I also made sure that both server and client are using the same websocket protocol, so I tested it by executing the commands
 that I previously used on 2.1. Here is the output:
 ![Output After Modify](sources/2.2%20output.jpg)
+
+### 2.3 Small changes. Add some information to client
+I added the information about the sender, its IP, and its Port by adding `bcast_tx.send(format!("{addr} : {text}"))?;`
+and modifying `println!("New connection from Laras' Computer {addr:?}");` in `server.rs`. Furthermore, I also modified
+`println!("Laras' Computer - From server: {}", text);` in `client.rs`. I made those modifications so that the sender's information
+can be seen as a broadcast message on the terminal. Here is the output sample:
+
+Server:
+![Server](sources/2.3%20server.png)
+
+Client:
+![Server](sources/2.3%20client.png)
